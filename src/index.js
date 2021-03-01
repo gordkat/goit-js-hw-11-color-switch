@@ -26,12 +26,14 @@ const randomIntegerFromInterval = (min, max) => {
 const handelStart = () => {
   intervalId = setInterval(changeBgColor, 1000);
   startRef.removeEventListener('click', handelStart);
+  startRef.setAttribute('disabled', null);
   stopRef.addEventListener('click', handelStop);
 };
 const handelStop = () => {
   if (!intervalId) return;
   clearInterval(intervalId);
   stopRef.removeEventListener('click', handelStop);
+  startRef.removeAttribute('disabled');
   startRef.addEventListener('click', handelStart);
 };
 
